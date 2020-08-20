@@ -1,13 +1,7 @@
 from django.contrib import admin
 
-from .models import Category, Status, MainBlock, MainQuest, Events
+from .models import Status, MainBlock, MainQuest, Events
 # Register your models here.
-
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    search_fields = ('name',)
-    list_display = ('name',)
 
 
 @admin.register(Status)
@@ -31,4 +25,4 @@ class MainBlockAdmin(admin.ModelAdmin):
 @admin.register(Events)
 class EventsAdmin(admin.ModelAdmin):
     search_fields = ('name',)
-    list_display = ('name', 'block', 'category', 'status', 'main_img',)
+    list_display = ('name', 'block', 'status', 'main_img',)

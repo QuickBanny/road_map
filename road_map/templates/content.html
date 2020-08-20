@@ -3,27 +3,28 @@
 {% block content %}
     <div class="container">
         <div class="row">
-{% for quest in main_quest%}
+            {{context}}
+{% for quest_name, blocks in context.items%}
             <div class="col-lg-4">
             <div class="card" style="width: 23rem;">
               <div class="card-body">
-                <h5 class="card-title">{{quest.name}}</h5>
+                <h5 class="card-title">{{quest_name}}</h5>
                     <div class="accordion" id="accordionExample">
-                        {% for block in quest.blocks.all%}
+                        {% for block_name, events in blocks.items%}
                           <div class="card" id="card-block">
                             <div class="card-header" id="headingOne">
                               <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{block.id}}" aria-expanded="true" aria-controls="collapse{{block.id}}">
-                                  {{block.name}}
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#{{block_name}}" aria-expanded="true" aria-controls="{{block_name}}">
+                                  {{block_name}}
                                 </button>
                               </h2>
                             </div>
 
-                            <div id="collapse{{block.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="{{block_name}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                               <div class="card-body">
-                                  {% for event in block.events.all%}
+                                  {% for event in events%}
                                     <div class="card" style="width: 18rem;">
-                                        <a href='#' data-toggle="modal" data-target="#{{event.name}}">
+                                        <a href='#' data-toggle="modal" data-target="#modal{{event.id}}">
                                             <div class="card-header">
                                                 {{event.name}}
                                             </div>
@@ -38,7 +39,7 @@
                                         </p>
                                       </div>
                                     </div>
-                                  <div class="modal" tabindex="-1" id="{{event.name}}">
+                                  <div class="modal" tabindex="-1" id="modal{{event.id}}">
                                       <div class="modal-dialog">
                                         <div class="modal-content">
                                           <div class="modal-header">
