@@ -1,0 +1,8 @@
+#card-block::-webkit-scrollbar {width: 3px; height: 3px;}
+#card-block::-webkit-scrollbar-track { background-color: #999;}
+#card-block::-webkit-scrollbar-track-piece { background-color: #ffffff;}
+#card-block::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
+#card-block::-webkit-scrollbar-corner { background-color: #999;}
+#card-block::-webkit-resizer { background-color: #666;}
+
+#card-block {overflow-y: auto; max-height: 600px}
