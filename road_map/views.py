@@ -19,13 +19,13 @@ def first(request):
         dict_blocks = {}
         for block in blocks:
             event_by_block = event_by_quest.filter(block__name=block.name)
-            dict_blocks[block.name.replace(' ', '_')] = {'name': block.name,
+            dict_blocks[block.name.replace(' ', '_')] = {'id': block.id,
+                                                         'name': block.name,
                                                          'events': event_by_block,
                                                          'count_events': len(event_by_block)}
-        dict_quests[quest.name.replace(' ', '_')] = {'name': quest.name,
+        dict_quests[quest.name.replace(' ', '_')] = {'id': quest.id,
+                                                     'name': quest.name,
                                                      'blocks': dict_blocks}
 
-    return render(request, template_name='content.html', context={'context': dict_quests,
-                                                                  'quests': quests,
-                                                                  'blocks': blocks})
+    return render(request, template_name='content.html', context={'context': dict_quests})
 
