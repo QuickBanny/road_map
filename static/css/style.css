@@ -6,3 +6,20 @@
 #card-block::-webkit-resizer { background-color: #666;}
 
 #card-block {overflow-y: auto; max-height: 600px}
+
+.p_events_status {
+    font-size: small;
+}
+
+.p_events_category {
+    font-size: small;
+}
+
+.p_events_date {
+    font-size: small;
+}
+
+.events_modal_img {
+    height: 200px;
+    width: 400px;
+}
