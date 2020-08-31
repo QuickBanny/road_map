@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-
+import datetime
 class Status(models.Model):
     name = models.CharField(max_length=50)
 
@@ -11,6 +11,7 @@ class Status(models.Model):
 class MainBlock(models.Model):
     #quest = models.ForeignKey(MainQuest, on_delete=models.CASCADE, related_name='blocks')
     name = models.CharField(default='Block', max_length=50)
+    dead_line = models.DateField(default=datetime.datetime.now, blank=True)
 
     def __str__(self):
         return self.name
@@ -34,3 +35,4 @@ class Events(models.Model):
     crt_date = models.DateField(auto_now_add=True)
     upd_date = models.DateField(auto_now=True)
     desc = models.TextField()
+    finished = models.BooleanField(default=False)
