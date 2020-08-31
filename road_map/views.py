@@ -15,6 +15,7 @@ def first(request):
         if event_by_quest_finished:
             finished_pers = (100 // len(event_by_quest)) * len(event_by_quest_finished)
 
+        str_all_events = '{}/{}'.format(len(event_by_quest_finished), len(event_by_quest))
         dict_blocks = {}
         for block in blocks:
             event_by_block = event_by_quest.filter(block__name=block.name).order_by('finished')
@@ -26,7 +27,8 @@ def first(request):
                                                      'name': quest.name,
                                                      'date_of_release': quest.date_of_release,
                                                      'blocks': dict_blocks,
-                                                     'finished_pers': finished_pers}
+                                                     'finished_pers': finished_pers,
+                                                     'str_all_events': str_all_events}
 
     return render(request, template_name='content.html', context={'context': dict_quests})
 
