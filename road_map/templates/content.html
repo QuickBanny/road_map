@@ -8,6 +8,12 @@
             <div class="card" style="width: 23rem;">
               <div class="card-body">
                 <h5 class="card-title">{{quest_value.name}}</h5>
+                  <p class="p_events_status">
+                      Date of release: {{quest_value.date_of_release}}
+                      <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: {{quest_value.finished_pers}}%" aria-valuenow="{{quest_value.finished_pers}}" aria-valuemin="0" aria-valuemax="100">{{quest_value.finished_pers}}%</div>
+                        </div>
+                  </p>
                     <div class="accordion" id="accordionExample">
                         {% for block_name, block_value in quest_value.blocks.items%}
                         {% if block_value.count_events > 0%}
@@ -19,12 +25,6 @@
 
                                 </button>
                               </h2>
-                                <p class="p_events_status">
-                                      Dead line: {{block_value.dead_line}}
-                                  </p>
-                                <div class="progress">
-                                  <div class="progress-bar bg-success" role="progressbar" style="width: {{block_value.finished_block}}%" aria-valuenow="{{block_value.finished_block}}" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
                             </div>
 
                             <div id="target{{quest_value.id}}-{{block_value.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">

@@ -10,23 +10,24 @@ def first(request):
     blocks = MainBlock.objects.all()
     for quest in quests:
         event_by_quest = Events.objects.filter(quest__name=quest.name)
+        event_by_quest_finished = Events.objects.filter(quest__name=quest.name, finished=True)
+        if not event_by_quest_finished:
+            finished_pers = 0
+        else:
+            finished_pers = (100 // len(event_by_quest)) * len(event_by_quest_finished)
+
         dict_blocks = {}
         for block in blocks:
             event_by_block = event_by_quest.filter(block__name=block.name).order_by('finished')
-            finished_event_by_block = event_by_quest.filter(block__name=block.name, finished=True)
-            if not finished_event_by_block:
-                finished_pers = 0
-            else:
-                finished_pers = (100/len(event_by_block))*len(finished_event_by_block)
             dict_blocks[block.name.replace(' ', '_')] = {'id': block.id,
                                                          'name': block.name,
-                                                         'dead_line': block.dead_line,
                                                          'events': event_by_block,
-                                                         'finished_block': finished_pers,
                                                          'count_events': len(event_by_block)}
         dict_quests[quest.name.replace(' ', '_')] = {'id': quest.id,
                                                      'name': quest.name,
-                                                     'blocks': dict_blocks}
+                                                     'date_of_release': quest.date_of_release,
+                                                     'blocks': dict_blocks,
+                                                     'finished_pers': finished_pers}
 
     return render(request, template_name='content.html', context={'context': dict_quests})
 
