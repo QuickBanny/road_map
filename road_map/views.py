@@ -9,11 +9,10 @@ def first(request):
     quests = MainQuest.objects.all()
     blocks = MainBlock.objects.all()
     for quest in quests:
+        finished_pers = 0
         event_by_quest = Events.objects.filter(quest__name=quest.name)
         event_by_quest_finished = Events.objects.filter(quest__name=quest.name, finished=True)
-        if not event_by_quest_finished:
-            finished_pers = 0
-        else:
+        if event_by_quest_finished:
             finished_pers = (100 // len(event_by_quest)) * len(event_by_quest_finished)
 
         dict_blocks = {}
