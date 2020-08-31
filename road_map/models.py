@@ -21,7 +21,8 @@ class MainBlock(models.Model):
 class MainQuest(models.Model):
     name = models.CharField(default='Quest', max_length=50)
     date_of_release = models.DateField(auto_created=True)
-
+    crt_date = models.DateField(auto_created=True)
+    
     def __str__(self):
         return self.name
 
