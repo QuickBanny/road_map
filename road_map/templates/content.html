@@ -7,7 +7,7 @@
             <div class="col-lg-4">
             <div class="card" style="width: 23rem;">
               <div class="card-body">
-                <h5 class="card-title">{{quest_value.name}} - {{quest_value.str_all_events}}</h5>
+                <h5 class="card-title">{{quest_value.name}}</h5>
                   <p class="p_events_status">
                       Date of release: {{quest_value.date_of_release}}
                       <div class="progress">
@@ -21,7 +21,7 @@
                             <div class="card-header" id="headingOne">
                               <h2 class="mb-0">
                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#target{{quest_value.id}}-{{block_value.id}}" aria-expanded="true" aria-controls="target{{quest_value.id}}-{{block_value.id}}">
-                                  {{block_value.name}} - events({{block_value.count_events}})
+                                  {{block_value.name}} ({{block_value.count_events}})
 
                                 </button>
                               </h2>
