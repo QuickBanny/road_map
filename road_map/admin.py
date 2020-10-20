@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Status, MainBlock, MainQuest, Events
+from .models import Status, MainBlock, Level, Events
 # Register your models here.
 
 
@@ -10,7 +10,7 @@ class StatusAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
-@admin.register(MainQuest)
+@admin.register(Level)
 class MainQuestAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_display = ('name',)
@@ -25,4 +25,4 @@ class MainBlockAdmin(admin.ModelAdmin):
 @admin.register(Events)
 class EventsAdmin(admin.ModelAdmin):
     search_fields = ('name',)
-    list_display = ('name', 'block', 'status', 'main_img',)
+    list_display = ('name', 'quest', 'block', 'status', 'main_img')

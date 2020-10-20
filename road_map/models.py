@@ -18,7 +18,8 @@ class MainBlock(models.Model):
         return self.name
 
 
-class MainQuest(models.Model):
+#class MainQuest(models.Model):
+class Level(models.Model):
     name = models.CharField(default='Quest', max_length=50)
     date_of_release = models.DateField(auto_created=True)
     crt_date = models.DateField(auto_created=True)
@@ -26,9 +27,10 @@ class MainQuest(models.Model):
     def __str__(self):
         return self.name
 
+
 class Events(models.Model):
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
-    quest = models.ForeignKey(MainQuest, on_delete=models.CASCADE)
+    quest = models.ForeignKey(Level, on_delete=models.CASCADE)
     block = models.ForeignKey(MainBlock, on_delete=models.CASCADE)
     name = models.CharField(default='Event', max_length=50)
     main_img = models.ImageField(upload_to='events_img')

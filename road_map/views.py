@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.http import response
-from .models import MainQuest, MainBlock, Events
+from .models import Level, MainBlock, Events
 # Create your views here.
 
 
 def first(request):
     dict_quests = {}
-    quests = MainQuest.objects.all()
+    quests = Level.objects.all()
     blocks = MainBlock.objects.all()
     for quest in quests:
         finished_pers = 0
