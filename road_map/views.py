@@ -6,7 +6,9 @@ from .models import Level, MainBlock, Events
 
 def first(request):
     dict_quests = {}
-    quests = Level.objects.all()
+    #quests = Level.objects.all()
+    quests = Level.objects.order_by('position')
+
     blocks = MainBlock.objects.all()
     for quest in quests:
         finished_pers = 0

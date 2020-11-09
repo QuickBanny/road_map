@@ -13,7 +13,7 @@ class StatusAdmin(admin.ModelAdmin):
 @admin.register(Level)
 class MainQuestAdmin(admin.ModelAdmin):
     search_fields = ('name',)
-    list_display = ('name',)
+    list_display = ('name', 'position')
 
 
 @admin.register(MainBlock)
