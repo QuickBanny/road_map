@@ -34,7 +34,7 @@ class Events(models.Model):
     quest = models.ForeignKey(Level, on_delete=models.CASCADE)
     block = models.ForeignKey(MainBlock, on_delete=models.CASCADE)
     name = models.CharField(default='Event', max_length=50)
-    main_img = models.ImageField(upload_to='events_img', blank=True, null=True)
+    main_img = models.ImageField(upload_to='events_img', blank=True, null=True, default='events_img/default.png')
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
     crt_date = models.DateField(auto_now_add=True)
     upd_date = models.DateField(auto_now=True)
